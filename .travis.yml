@@ -1,0 +1,9 @@
+language: generic
+sudo: require
+services:
+    - docker
+
+before_install:
+    - docker build -t roaslin/client-single -f Dockerfile.dev .
+scripts:
+    - docker run -e CI=true roaslin/client-single npm run test
